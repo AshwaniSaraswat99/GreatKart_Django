@@ -1,0 +1,2 @@
+- [x] Add MEDIA_URL and MEDIA_ROOT to greatkart/greatkart/settings.py
+- [x] Fix MEDIA_ROOT reference in greatkart/greatkart/urls.py to use settings.MEDIA_ROOT
