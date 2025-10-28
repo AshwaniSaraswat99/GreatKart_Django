@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from store.models import Product
 from .models import Cart, CartItem
+from django.core.exceptions import ObjectDoesNotExist
 # Create your views here.
 def _cart_id(request):
     """Return the current session key, creating a session if needed.
@@ -44,8 +45,9 @@ def cart(request, total=0, quantity=0, cart_items=None, tax=0, grand_total=0):
         for item in cart_items:
             total += (item.product.price * item.quantity)
             quantity += item.quantity
-    except Cart.DoesNotExist:
+    except ObjectDoesNotExist:
         cart_items = []
+
     tax= (2 * total )/100
     grand_total= tax + total
 
